@@ -2,7 +2,7 @@
 
 A React application demonstrating the Model-View-Controller (MVC) architectural pattern. This project showcases how to structure a React application using MVC principles, custom hooks, and component-based architecture.
 
-![MVC Architecture](https://prod-files-secure.s3.us-west-2.amazonaws.com/b54522bb-020b-4914-8a01-cd6526be7ae9/82383da8-0080-4eee-a7b3-0f443fd2f92b/image.png)
+![MVC Architecture](https://www.freecodecamp.org/news/the-model-view-controller-pattern-mvc-architecture-and-frameworks-explained/)
 
 ## Features
 

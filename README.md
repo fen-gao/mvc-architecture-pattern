@@ -1,50 +1,127 @@
-# React + TypeScript + Vite
+# Car Clicker - MVC Architecture Study
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application demonstrating the Model-View-Controller (MVC) architectural pattern. This project showcases how to structure a React application using MVC principles, custom hooks, and component-based architecture.
 
-Currently, two official plugins are available:
+![MVC Architecture](https://prod-files-secure.s3.us-west-2.amazonaws.com/b54522bb-020b-4914-8a01-cd6526be7ae9/82383da8-0080-4eee-a7b3-0f443fd2f92b/image.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- List of clickable cars
+- Detailed view of selected car
+- Click counter for each car
+- Responsive design
+- Unit tests for components and hooks
+- JSON Server as mock backend
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Structure
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+src/
+├── assets/                # Static assets like images
+├── components/
+│   ├── CarList/          # Car list component
+│   ├── CarView/          # Car view component
+│   └── Header/           # Header component
+├── hooks/                # Custom hooks
+│   └── useCarModel.ts    # Car data management hook
+├── models/               # Data models
+│   └── car.ts           # Car type definitions
+├── services/             # API services
+│   └── carService.ts    # Car data operations
+└── App.tsx              # Main application component
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Prerequisites
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Node.js (v14 or higher)
+- npm or yarn
+- Git
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/mvc-architecture-pattern.git
+cd mvc-architecture-pattern
 ```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Create a `.env` file in the root directory:
+
+```bash
+VITE_API_URL=http://localhost:3001
+```
+
+4. Start the JSON Server (mock backend):
+
+```bash
+npx json-server --watch db.json --port 3001
+```
+
+5. In a new terminal, start the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The application will be available at `http://localhost:5173`
+
+## Running Tests
+
+To run the test suite:
+
+```bash
+npm test
+# or
+yarn test
+```
+
+## Architecture Overview
+
+This project follows the MVC pattern adapted for React:
+
+- **Model**: Implemented through the `useCarModel` hook and car service
+- **View**: React components (`CarList`, `CarView`, etc.)
+- **Controller**: Logic within hooks and components handling user interactions
+
+### Key Components
+
+- **CarList**: Displays available cars and handles car selection
+- **CarView**: Shows detailed information about the selected car
+- **useCarModel**: Custom hook managing car data and interactions
+
+## API Endpoints
+
+The mock API (JSON Server) provides the following endpoints:
+
+- `GET /cars` - Fetch all cars
+- `GET /cars/:id` - Fetch a specific car
+- `PATCH /cars/:id` - Update car click count
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- React Team for the amazing framework
+- JSON Server for providing an easy way to create a mock backend
+- All contributors who help improve this project

@@ -66,6 +66,7 @@ describe("useCarModel", () => {
     const consoleErrorSpy = jest
       .spyOn(console, "error")
       .mockImplementation(() => {});
+
     (getCarById as jest.Mock).mockRejectedValueOnce(
       new Error("Failed to fetch car")
     );
@@ -75,18 +76,25 @@ describe("useCarModel", () => {
     await act(async () => {
       const rendered = renderHook(() => useCarModel());
       hook = rendered;
-
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
 
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      "Error fetching car by ID:",
+      expect.any(Error)
+    );
+
+    (getCarById as jest.Mock).mockRejectedValueOnce(
+      new Error("Failed to fetch car")
+    );
+
     await act(async () => {
       await hook.result.current.handleCarClick(1);
-      await new Promise((resolve) => setTimeout(resolve, 0));
     });
 
     expect(hook.result.current.selectedCar).toBeNull();
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      "Error fetching car:",
+      "Error fetching car by ID:",
       expect.any(Error)
     );
 

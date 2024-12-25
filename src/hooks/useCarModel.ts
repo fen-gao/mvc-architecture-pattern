@@ -15,7 +15,7 @@ export const useCarModel = (): UseCarModelProps => {
       const car = await getCarById(id);
       setSelectedCar(car);
     } catch (error) {
-      console.error("Error fetching car:", error);
+      console.error("Error fetching car by ID:", error);
       setSelectedCar(null);
     }
   };
@@ -36,7 +36,7 @@ export const useCarModel = (): UseCarModelProps => {
         clickCount: newClickCount,
       });
     } catch (error) {
-      console.error("Error updating click count:", error);
+      console.error("Error updating car click count:", error);
     }
   };
 
@@ -55,7 +55,15 @@ export const useCarModel = (): UseCarModelProps => {
   }, []);
 
   useEffect(() => {
-    fetchCarById(1);
+    const fetchInitialCar = async () => {
+      try {
+        await fetchCarById(1);
+      } catch (error) {
+        console.error("Error fetching car by ID:", error);
+      }
+    };
+
+    fetchInitialCar();
   }, []);
 
   return {

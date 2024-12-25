@@ -1,0 +1,22 @@
+{
+  "cars": [
+    {
+      "id": "1",
+      "name": "Chevette",
+      "clickCount": 39,
+      "imgSrc": "chevette.jpeg"
+    },
+    {
+      "id": "2",
+      "name": "Landau",
+      "clickCount": 5,
+      "imgSrc": "landau.png"
+    },
+    {
+      "id": "3",
+      "name": "Maverick",
+      "clickCount": 3,
+      "imgSrc": "maverick.jpg"
+    }
+  ]
+}
